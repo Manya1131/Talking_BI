@@ -2,7 +2,9 @@
 
 import axios from "axios";
 
-const BASE = "http://localhost:8000";
+// Automatically use localhost for local development, and Render for the live site
+const BASE = process.env.REACT_APP_API_URL || 
+  (window.location.hostname === "localhost" ? "http://localhost:8000" : "https://talking-bi-2oa7.onrender.com");
 
 // ── Connection ──────────────────────────────────
 export const connectDatabase = async (connectionString) => {
