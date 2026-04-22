@@ -105,3 +105,36 @@ h1,h2,h3,h4,h5 { font-family: var(--font-display); }
 .fade-in   { animation: fadeIn 0.25s ease forwards; }
 .hover-lift{ transition: transform 0.2s ease, box-shadow 0.2s ease; }
 .hover-lift:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(14,165,233,0.16); }
+
+/* ── Mobile Responsive Overrides ── */
+@media (max-width: 800px) {
+  /* Global */
+  body { font-size: 13px !important; }
+
+  /* ConnectionScreen */
+  .conn-page { flex-direction: column !important; overflow-y: auto !important; }
+  .conn-left { width: 100% !important; flex: none !important; padding: 32px 24px !important; max-width: 100% !important; }
+  .conn-left-inner { max-width: 100% !important; text-align: center !important; }
+  .conn-left-inner h1 { font-size: 32px !important; }
+  .conn-left-inner p { max-width: 100% !important; margin: 0 auto 32px !important; }
+  .conn-features { align-items: center !important; }
+  .conn-right { width: 100% !important; padding: 24px !important; flex: none !important; }
+  .conn-card { padding: 24px 20px !important; }
+
+  /* InputForm */
+  .input-body { flex-direction: column !important; overflow-y: auto !important; }
+  .input-left { width: 100% !important; max-width: 100% !important; flex: none !important; padding: 24px !important; }
+  .input-right { width: 100% !important; padding: 24px !important; border-left: none !important; border-top: 1px solid var(--border) !important; flex: none !important; }
+  .input-topbar { flex-wrap: wrap !important; gap: 12px !important; padding: 12px 16px !important; }
+  .theme-grid { grid-template-columns: repeat(2, 1fr) !important; }
+
+  /* DashboardScreen */
+  .dash-body { flex-direction: column !important; overflow-y: auto !important; }
+  .dash-main { width: 100% !important; flex: none !important; padding: 16px !important; overflow-y: visible !important; }
+  .dash-sidebar { width: 100% !important; padding: 16px !important; border-left: none !important; border-top: 1px solid var(--border) !important; flex: none !important; overflow-y: visible !important; }
+  .chart-grid { grid-template-columns: 1fr !important; }
+  .kpi-grid { grid-template-columns: 1fr !important; }
+  .dash-topbar { flex-direction: column !important; align-items: flex-start !important; gap: 12px !important; padding: 12px 16px !important; }
+  .dash-topbar-left { width: 100% !important; flex-wrap: wrap !important; }
+  .dash-topbar-actions { width: 100% !important; justify-content: space-between !important; }
+}

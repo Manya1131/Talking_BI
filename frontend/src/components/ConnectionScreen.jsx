@@ -104,12 +104,12 @@ export default function ConnectionScreen({ onConnected }) {
   };
 
   return (
-    <div style={S.page}>
+    <div style={S.page} className="conn-page">
       {/* ── Left hero ── */}
-      <div style={S.left}>
+      <div style={S.left} className="conn-left">
         <Particles />
         <div style={S.blob1}/><div style={S.blob2}/>
-        <div style={S.leftInner}>
+        <div style={S.leftInner} className="conn-left-inner">
           {/* Brand */}
           <div style={S.brand}>
             <div style={S.brandIcon}>
@@ -127,7 +127,7 @@ export default function ConnectionScreen({ onConnected }) {
           </h1>
           <p style={S.sub}>Connect your database or drop a CSV. Describe what you need — AI builds your full dashboard with voice explanations.</p>
 
-          <div style={S.features}>
+          <div style={S.features} className="conn-features">
             {FEATURES.map(({ icon, label }) => (
               <div key={label} style={S.feature}>
                 <span style={S.featIcon}>{icon}</span>
@@ -139,8 +139,8 @@ export default function ConnectionScreen({ onConnected }) {
       </div>
 
       {/* ── Right panel ── */}
-      <div style={S.right}>
-        <div style={S.card} className="fade-up">
+      <div style={S.right} className="conn-right">
+        <div style={S.card} className="conn-card fade-up">
           <h2 style={S.cardH}>Connect your data</h2>
           <p style={S.cardSub}>Database connection string or CSV file — your choice</p>
 

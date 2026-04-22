@@ -39,7 +39,7 @@ export default function InputForm({ connectionData, onSubmit, loading, sqlQuerie
   return (
     <div style={S.wrap}>
       {/* ── Topbar ── */}
-      <div style={S.bar}>
+      <div style={S.bar} className="input-topbar">
         <div style={S.barLeft}>
           {/* Back button */}
           <button style={S.backBtn} onClick={onBack} title="Back to connection">
@@ -63,9 +63,9 @@ export default function InputForm({ connectionData, onSubmit, loading, sqlQuerie
         </div>
       </div>
 
-      <div style={S.body}>
+      <div style={S.body} className="input-body">
         {/* ── Left form ── */}
-        <div style={S.left}>
+        <div style={S.left} className="input-left">
           <div style={S.formHead}>
             <h2 style={S.h2}>Build your dashboard</h2>
             <p style={S.p}>Describe what you want to see in plain English — AI handles the rest</p>
@@ -102,7 +102,7 @@ export default function InputForm({ connectionData, onSubmit, loading, sqlQuerie
           </F>
 
           <F label="Color theme">
-            <div style={S.themeGrid}>
+            <div style={S.themeGrid} className="theme-grid">
               {THEMES.map(t => (
                 <button key={t.id} style={{ ...S.themeBtn, ...(theme===t.id ? S.themeOn : {}) }}
                   onClick={() => setTheme(t.id)}>
@@ -168,7 +168,7 @@ export default function InputForm({ connectionData, onSubmit, loading, sqlQuerie
         </div>
 
         {/* ── Right schema ── */}
-        <div style={S.right}>
+        <div style={S.right} className="input-right">
           <p style={S.schemaTitle}>
             <svg width="12" height="12" viewBox="0 0 12 12" fill="none" style={{ marginRight:6 }}>
               <rect x=".5" y=".5" width="11" height="11" rx="2" stroke="var(--accent)" strokeWidth="1.1"/>

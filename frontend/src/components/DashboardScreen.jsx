@@ -511,8 +511,8 @@ export default function DashboardScreen({ data, sessionId, colorSchema, onReset,
   return (
     <div style={S.screen}>
       {/* Topbar */}
-      <div style={S.topbar}>
-        <div style={S.topLeft}>
+      <div style={S.topbar} className="dash-topbar">
+        <div style={S.topLeft} className="dash-topbar-left">
           <div style={S.logoWrap}>
             <svg width="16" height="16" viewBox="0 0 22 22" fill="none">
               <path d="M3 17L8 6l5 8 3-5" stroke="var(--accent3)" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -523,7 +523,7 @@ export default function DashboardScreen({ data, sessionId, colorSchema, onReset,
           <div style={S.badge}>{total_kpis_generated} charts</div>
         </div>
 
-        <div style={S.actions}>
+        <div style={S.actions} className="dash-topbar-actions">
           {sqlQueries?.length > 0 && (
             <button style={S.sqlBtn} onClick={() => setShowSQL(v => !v)}>
               <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
@@ -598,8 +598,8 @@ export default function DashboardScreen({ data, sessionId, colorSchema, onReset,
       )}
 
       {/* Body */}
-      <div style={S.body}>
-        <div style={S.main}>
+      <div style={S.body} className="dash-body">
+        <div style={S.main} className="dash-main">
           <div style={S.tabs}>
             {[["kpis","📊 KPI Cards"],["charts","📈 Charts"],["both","⚡ Both"]].map(([id, label]) => (
               <button
@@ -614,14 +614,14 @@ export default function DashboardScreen({ data, sessionId, colorSchema, onReset,
 
           <div ref={exportRef} style={S.exportArea}>
             {(activeTab === "kpis" || activeTab === "both") && (
-              <div style={S.kpiGrid}>
+              <div style={S.kpiGrid} className="kpi-grid">
                 {charts.map((chart, i) => (
                   <KPICard key={chart.kpi} chart={chart} colorSchema={colorSchema || "default"} index={i}/>
                 ))}
               </div>
             )}
             {(activeTab === "charts" || activeTab === "both") && (
-              <div style={S.chartGrid}>
+              <div style={S.chartGrid} className="chart-grid">
                 {charts.map((chart, i) => (
                   <ChartCard key={chart.kpi} chart={chart} colorSchema={colorSchema || "default"} index={i}/>
                 ))}
@@ -630,7 +630,7 @@ export default function DashboardScreen({ data, sessionId, colorSchema, onReset,
           </div>
         </div>
 
-        <div style={S.sidebar}>
+        <div style={S.sidebar} className="dash-sidebar">
           <VoicePanel sessionId={sessionId} dashboardContext={voiceCtx}/>
           <InsightPanel insights={insights} summary={summary}/>
         </div>
