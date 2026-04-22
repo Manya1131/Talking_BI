@@ -1,6 +1,6 @@
 """
 main.py
-Talking BI - FastAPI Backend
+SmartDash AI - FastAPI Backend
 Entry point for the application.
 """
 
@@ -13,9 +13,9 @@ from routers import connection, dashboard, voice
 # ──────────────────────────────────────────────
 
 app = FastAPI(
-    title="Talking BI API",
+    title="SmartDash AI API",
     description="""
-## Talking BI - Backend API
+## SmartDash AI - Backend API
 
 An AI-powered Business Intelligence platform that:
 - 🔌 Connects to any SQL database via connection string
@@ -60,7 +60,7 @@ app.include_router(voice.router)
 @app.get("/", tags=["Health"])
 def root():
     return {
-        "status": "✅ Talking BI API is running",
+        "status": "✅ SmartDash AI API is running",
         "docs": "/docs",
         "version": "1.0.0"
     }

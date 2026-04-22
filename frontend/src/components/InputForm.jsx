@@ -55,7 +55,7 @@ export default function InputForm({ connectionData, onSubmit, loading, sqlQuerie
                 <circle cx="18" cy="5" r="2.2" fill="var(--accent4)"/>
             </svg>
           </div>
-          <span style={S.logoTxt}>Talking<span style={{ color:"var(--accent)" }}>BI</span></span>
+          <span style={S.logoTxt}>SmartDash <span style={{ color:"var(--accent)" }}>AI</span></span>
         </div>
         <div style={S.pill}>
           <div style={S.dot}/>

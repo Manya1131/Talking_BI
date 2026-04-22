@@ -118,7 +118,7 @@ export default function ConnectionScreen({ onConnected }) {
                 <circle cx="18" cy="5" r="2.2" fill="var(--accent4)"/>
               </svg>
             </div>
-            <span style={S.brandName}>Talking<span style={S.brandAccent}>BI</span></span>
+            <span style={S.brandName}>SmartDash <span style={S.brandAccent}>AI</span></span>
           </div>
 
           <h1 style={S.headline}>
