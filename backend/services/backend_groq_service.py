@@ -5,21 +5,43 @@ import os, json, re
 from groq import Groq
 from dotenv import load_dotenv
 
+# Load environment variables
 load_dotenv()
-_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+# Verify API key exists
+api_key = os.getenv("GROQ_API_KEY", "").strip()
+if not api_key:
+    raise ValueError("❌ GROQ_API_KEY not found in .env file. Please add it.")
+
+if not api_key.startswith("gsk_"):
+    raise ValueError(f"❌ GROQ_API_KEY appears invalid (should start with 'gsk_'). Check your .env file.")
+
+_client = Groq(api_key=api_key)
 MODEL   = "llama-3.3-70b-versatile"   # faster, lower token usage
 
 def _chat(system: str, user: str, temperature: float = 0.3) -> str:
-    response = _client.chat.completions.create(
-        model=MODEL,
-        messages=[
-            {"role": "system", "content": system},
-            {"role": "user",   "content": user}
-        ],
-        temperature=temperature,
-        max_tokens=2048
-    )
-    return response.choices[0].message.content.strip()
+    try:
+        response = _client.chat.completions.create(
+            model=MODEL,
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user",   "content": user}
+            ],
+            temperature=temperature,
+            max_tokens=2048
+        )
+        return response.choices[0].message.content.strip()
+    except Exception as e:
+        error_msg = str(e)
+        if "401" in error_msg or "Invalid" in error_msg:
+            raise ValueError(
+                f"🔑 Groq API authentication failed. Please check:\n"
+                f"   1. Your GROQ_API_KEY in backend/.env is valid\n"
+                f"   2. Get a new key at: https://console.groq.com/keys\n"
+                f"   3. Restart the backend after updating .env\n"
+                f"Error: {error_msg}"
+            )
+        raise
 
 
 def _extract_json(text: str):

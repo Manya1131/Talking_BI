@@ -3,12 +3,7 @@ import "./index.css";
 import ConnectionScreen from "./components/ConnectionScreen";
 import InputForm from "./components/InputForm";
 import DashboardScreen from "./components/DashboardScreen";
-import axios from "axios";
-
-const BASE = "http://localhost:8000";
-
-const connectDatabase    = async (cs) => (await axios.post(`${BASE}/api/connection/connect`, { connection_string: cs })).data;
-const generateDashboard  = async (p)  => (await axios.post(`${BASE}/api/dashboard/generate`, p)).data;
+import { connectDatabase, generateDashboard } from "./api";
 
 export default function App() {
   const [screen,      setScreen]      = useState("connect");

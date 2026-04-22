@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { connectDatabase } from "../api";
+import { connectDatabase, BASE } from "../api";
 
 const EXAMPLES = [
   { label:"Supabase",   icon:"⚡", value:"postgresql://postgres:password@db.xxx.supabase.co:5432/postgres" },
@@ -82,7 +82,8 @@ export default function ConnectionScreen({ onConnected }) {
     try {
       const formData = new FormData();
       formData.append("file", csvFile);
-      const res = await fetch("http://localhost:8000/api/connection/upload-csv", {
+
+      const res = await fetch(`${BASE}/api/connection/upload-csv`, {
         method: "POST",
         body: formData,
       });
